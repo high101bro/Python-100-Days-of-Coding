@@ -17,3 +17,4 @@ for i in range(0, len(student_scores)):
         highscore = student_scores[i]
         student_highscore = student
 print(f"Congratulations! Student #{student_highscore} has the highest score of {highscore}!")
+
