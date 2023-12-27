@@ -26,4 +26,4 @@ def add_health():
     health += 2
 
 add_health()
-print('Health should be 10 +2 (12), because of global scope variable', health)
+print('Health should be 10 + 2 = 12, because of global scope variable', health)
