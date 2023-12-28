@@ -3,6 +3,12 @@
 from simple_term_menu import TerminalMenu
 import os
 
+# The purpose of this project isn't to make a fully functional coffee machine, rather test pycharm features
+# Some PyCharm notable features: To Do feature, spell checker, function and variable explorer, linting...
+
+# TODO: Continue exploring PyCharm features
+# TODO: Test and Debug
+
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -12,6 +18,7 @@ plugged_in = True
 
 money_made = 0
 
+# TODO: Add more coffee types
 coffee = {
     "cappuccino": {
         "coffee": 24,
@@ -182,6 +189,7 @@ def print_desired_coffee_menu():
     prompt_to_deposit_money()
 
     global money_made
+    # TODO: Optimize the code below
     if check_sufficient_resources(desired_coffee_selected):
         clear()
         if desired_coffee_selected == "cappuccino":
