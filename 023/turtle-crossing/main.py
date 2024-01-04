@@ -127,7 +127,7 @@ spawn_thread_food.start()
 
 def randomly_spawn_vehicle(vehicles_driving_left_queue):
     while True:
-        wait_time = random.randint(5, 40)
+        wait_time = random.randint(8, 40)  # divided by 10 later to give 10ths of a second
         time.sleep(wait_time/10)
         vehicles_driving_left_queue.put("spawn")
 
@@ -139,7 +139,7 @@ spawn_thread_vehicle.start()
 
 def randomly_spawn_vehicle(vehicles_driving_right_queue):
     while True:
-        wait_time = random.randint(5, 40)
+        wait_time = random.randint(8, 40)  # divided by 10 later to give 10ths of a second
         time.sleep(wait_time/10)
         vehicles_driving_right_queue.put("spawn")
 
@@ -281,17 +281,20 @@ while True:
             vehicle.drive()
         if vehicle.distance(player_1) < 25:
             print('Squish!!!')
+            scoreboard.turtle_squishes += 1
             splat = Splat(pet=player_1, file=splat_img, direction='left')
-            player_1.reset()
+            player_1.reset(scoreboard)
         if vehicle.distance(player_2) < 25:
             print('Squish!!!')
+            scoreboard.turtle_squishes += 1
             splat = Splat(pet=player_2, file=splat_img, direction='left')
-            player_2.reset()
+            player_2.reset(scoreboard)
         for pet in pets:
             if vehicle.distance(pet) < 25:
                 print('Squish!!!')
+                scoreboard.turtle_squishes += 1
                 splat = Splat(pet=pet, file=splat_img, direction='left')
-                pet.reset()
+                pet.reset(scoreboard)
         if vehicle.xcor() < ((SCREEN_WIDTH + 200) / 2 * -1):
             vehicle.moving = False
             vehicle.hideturtle()
@@ -300,18 +303,21 @@ while True:
         if vehicle.moving:
             vehicle.drive()
         if vehicle.distance(player_1) < 25:
-            print('Squish!!!')
+            print('Squish!!!') 
+            scoreboard.turtle_squishes += 1
             splat = Splat(pet=player_1, file=splat_img, direction='right')
-            player_1.reset()
+            player_1.reset(scoreboard)
         if vehicle.distance(player_2) < 25:
             print('Squish!!!')
+            scoreboard.turtle_squishes += 1
             splat = Splat(pet=player_2, file=splat_img, direction='right')
-            player_2.reset()
+            player_2.reset(scoreboard)
         for pet in pets:
             if vehicle.distance(pet) < 25:
                 print('Squish!!!')
+                scoreboard.turtle_squishes += 1
                 splat = Splat(pet=pet, file=splat_img, direction='right')
-                pet.reset()
+                pet.reset(scoreboard)
         if vehicle.xcor() > ((SCREEN_WIDTH + 200) / 2):
             vehicle.moving = False
             vehicle.hideturtle()

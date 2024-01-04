@@ -4,6 +4,7 @@ import time
 import queue
 import os
 import copy
+import pickle
 
 UP = 90
 DOWN = 270
@@ -24,7 +25,7 @@ class Game(Turtle):
         self.vehicles_driving_left_list = []
         self.vehicles_driving_right_queue = queue.Queue()
         self.vehicles_driving_right_list = []
-        self.turtle_splats = []
+        self.turtle_splats = 0
         self.food_queue = queue.Queue()
         self.food_list = []
         self.poop_list = []
@@ -38,12 +39,33 @@ class Scoreboard(Turtle):
         self.penup()
         self.goto(0, -350)
         self.score = 0
-        self.write(f"Turtle Tummy: {self.score}", align=ALIGNMENT, font=(FONT, SIZE, TYPE))
+        
+        if os.path.exists("high_score.pkl"):
+            print('file exists')
+            with open("high_score.pkl", "rb") as file:
+                self.high_score = pickle.load(file)
+        else:
+            self.high_score = 0
+            
+        if os.path.exists("turtle_squishes.pkl"):
+            print('file exists')
+            with open("turtle_squishes.pkl", "rb") as file:
+                self.turtle_squishes = pickle.load(file)
+        else:
+            self.turtle_squishes = 0
+        self.update_score()
 
     def increase_score(self):
         self.score += 1
+        self.update_score()
+
+    def update_score(self):
         self.clear()
-        self.write(f"Turtle Tummy: {self.score}", align=ALIGNMENT, font=(FONT, SIZE, TYPE))
+        if self.score > self.high_score:
+            self.high_score = self.score
+            with open("high_score.pkl", "wb") as file:
+                pickle.dump(self.high_score, file)
+        self.write(f"Score: {self.score}     High Score: {self.high_score}     Squishes: {self.turtle_squishes}", align=ALIGNMENT, font=(FONT, SIZE, TYPE))
 
     def game_over(self):
         self.goto(0, 0)
@@ -88,6 +110,7 @@ class Vehicle(Turtle):
             xcor = self.xcor() + 3
         self.goto(xcor, self.ycor())
 
+
 class Splat(Turtle):
     def __init__(self, pet, file, direction):
         super().__init__()
@@ -98,6 +121,7 @@ class Splat(Turtle):
             self.goto(pet.xcor() + 45 + ran_splat, pet.ycor() - 3 + ran_splat)
         elif direction == 'left':
             self.goto(pet.xcor() - 45 + ran_splat, pet.ycor() - 3 + ran_splat)
+
 
 class Pet(Turtle):
     def __init__(self, color, xcor, y_cor, screen_width, screen_height):
@@ -112,11 +136,14 @@ class Pet(Turtle):
         self.screen_width = screen_width
         self.screen_height = screen_height
 
-    def reset(self):
+    def reset(self, scoreboard):
         self.hideturtle()
         self.goto(-4, 280)
         self.setheading(DOWN)
         self.showturtle()
+        with open("turtle_squishes.pkl", "wb") as file:
+            pickle.dump(scoreboard.turtle_squishes, file)
+            scoreboard.update_score()
 
     def move_up(self):
         if self.ycor() + 20 > ((self.screen_height / 2) - 20):
@@ -125,6 +152,7 @@ class Pet(Turtle):
         else:
             self.setheading(UP)
             self.forward(20)
+
     def move_down(self):
         if self.ycor() - 20 < ((self.screen_height / 2) - 20) * -1:
             self.setheading(UP)
@@ -158,7 +186,7 @@ class Pet(Turtle):
         }
         chance_of_moving = random.randint(1,100)
         if chance_of_moving > 99:
-            direction = random.choice(['up', 'down', 'left', 'right', 'forward', 'forward', 'forward', 'forward'])
+            direction = random.choice(['up', 'down', 'left', 'right', 'forward', 'forward', 'forward', 'forward', 'forward', 'forward'])
             if direction == 'forward':
                 pass
             else:
