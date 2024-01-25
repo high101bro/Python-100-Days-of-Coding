@@ -11,11 +11,10 @@ from email.mime.text import MIMEText
 # 4xx = Client screwed up...
 # 5xx = Server screwed up...
 
-GMAIL_ACCOUNT = "daniel.komnick@gmail.com"
-GMAIL_APP_PASSWORD = "jyacrruafvcbisjn"
+GMAIL_ACCOUNT = "UPDATE_ME@gmail.com"
+GMAIL_APP_PASSWORD = "UPDATE_ME"
 
 ISS_LOCATION_API = "http://api.open-notify.org/iss-now.json"
-GOOGLE_STATIC_MAPS_API_KEY = 'AIzaSyCryg-g7pVIBRmdVCeVqiehQZWg3igOmpc'
 
 MY_LAT = 40.438130
 MY_LON = -80.088210
