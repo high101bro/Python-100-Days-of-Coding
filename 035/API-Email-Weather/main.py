@@ -9,11 +9,13 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
+from dotenv import load_dotenv
+import os
 
 # openweathermap.org
-API_KEY = "UPDATE_ME"
-GMAIL_ACCOUNT = "UPDATE_ME@gmail.com"
-GMAIL_APP_PASSWORD = "UPDATE_ME"
+API_KEY = os.getenv("API_KEY")
+GMAIL_ACCOUNT = os.getenv("GMAIL_ACCOUNT")
+GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD")
 
 #######################################
 # Pulling weather information via API #
