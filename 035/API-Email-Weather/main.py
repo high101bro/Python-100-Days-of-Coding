@@ -12,7 +12,7 @@ from email.mime.text import MIMEText
 from dotenv import load_dotenv
 import os
 
-# openweathermap.org
+load_dotenv()
 API_KEY = os.getenv("API_KEY")
 GMAIL_ACCOUNT = os.getenv("GMAIL_ACCOUNT")
 GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD")
