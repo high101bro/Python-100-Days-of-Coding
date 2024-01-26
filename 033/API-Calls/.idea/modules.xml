@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/International-Space-Station-API-Calls-Email-Location.iml" filepath="$PROJECT_DIR$/.idea/International-Space-Station-API-Calls-Email-Location.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../API-ISS-Overhead/.idea/International-Space-Station-API-Calls-Email-Location.iml" filepath="$PROJECT_DIR$/../API-ISS-Overhead/.idea/International-Space-Station-API-Calls-Email-Location.iml" />
     </modules>
   </component>
 </project>
