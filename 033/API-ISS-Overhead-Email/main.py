@@ -106,7 +106,7 @@ if iss_within_range(iss_latitude, iss_longitude):
     recipients = ["daniel.komnick@gmail.com"]
 
     msg = MIMEText(message)
-    msg["Subject"] = "Quote of the Day"
+    msg["Subject"] = "ISS Overhead"
     msg["To"] = ", ".join(recipients)
     msg["From"] = GMAIL_ACCOUNT
 
