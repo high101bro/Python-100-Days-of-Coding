@@ -13,7 +13,7 @@ with open('quotes.txt', 'r') as quote_file:
 
 print(quote)
 
-recipients = ["daniel.komnick@gmail.com"]
+recipients = [GMAIL_ACCOUNT]
 email_text = f"""
 Hi! This is an automated message from your python script...
 

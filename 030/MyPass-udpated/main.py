@@ -120,7 +120,7 @@ website_entry.focus()
 website_entry.grid(column=1, row=1)
 
 email_username_entry = Entry(width=36)
-email_username_entry.insert(END, 'daniel.komnick@gmail.com')
+email_username_entry.insert(END, 'john.doe@gmail.com')
 email_username_entry.grid(column=1, row=2, columnspan=2)
 
 password_entry = Entry(width=26)

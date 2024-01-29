@@ -246,8 +246,7 @@ with open("weather_map.html", "w") as file:
 ###########################################
 
 
-# recipients = ["daniel.komnick@gmail.com", "lisa.komnick@gmail.com"]
-recipients = ["daniel.komnick@gmail.com"]
+recipients = [GMAIL_ACCOUNT]
 
 # Create a MIMEMultipart object for the email
 msg = MIMEMultipart()
