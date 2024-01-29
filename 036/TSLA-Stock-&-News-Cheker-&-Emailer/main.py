@@ -67,8 +67,7 @@ Brief: {article['description']}
 Link: {article['url']}
 """ for article in articles]
 
-    # recipients = ["daniel.komnick@gmail.com", "lisa.komnick@gmail.com"]
-    recipients = ["daniel.komnick@gmail.com"]
+    recipients = [GMAIL_ACCOUNT]
 
     msg = MIMEText("\n".join(formatted_articles))
     msg["Subject"] = f"{COMPANY_NAME} [{STOCK_NAME}] News"
